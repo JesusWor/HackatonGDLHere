@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <title>Mapa de POIs con Errores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
-    html, body, #map {
+    html,
+    body,
+    #map {
       height: 100%;
       margin: 0;
     }
+
     .legend {
       background: white;
       padding: 10px;
       line-height: 1.4em;
       font-size: 14px;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
+
     .legend span {
       display: inline-block;
       width: 14px;
@@ -27,6 +32,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="map"></div>
 
@@ -52,6 +58,14 @@
           L.geoJSON(data, {
             pointToLayer: (feature, latlng) => {
               conteo[tipoError]++;
+              const observacion = feature.properties.Observacion
+                ? `<b>Observación:</b> ${feature.properties.Observacion}<br>`
+                : "";
+              const popupContent = `
+                <b>POI_ID:</b> ${feature.properties.POI_ID || 'N/A'}<br>
+                ${observacion}
+                <b>Tipo de Error:</b> ${feature.properties.Tipo_error || tipoError}
+              `;
               return L.circleMarker(latlng, {
                 radius: 6,
                 fillColor: color,
@@ -59,14 +73,9 @@
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
-              }).bindPopup(`
-                <b>POI_ID:</b> ${feature.properties.POI_ID || 'N/A'}<br>
-                ${feature.properties.Observacion ? <b>Observación:</b> ${feature.properties.Observacion}<br> : ""}
-                <b>Tipo de Error:</b> ${feature.properties.Tipo_error || tipoError}
-              `);
+              }).bindPopup(popupContent);
             }
           }).addTo(map);
-
           actualizarLeyenda();
         });
     }
@@ -83,21 +92,20 @@
     }
 
     let legendDiv;
-
     const legend = L.control({ position: "bottomright" });
     legend.onAdd = function () {
       legendDiv = L.DomUtil.create("div", "legend");
-      actualizarLeyenda(); // Inicializa con 0
+      actualizarLeyenda();
       return legendDiv;
     };
     legend.addTo(map);
 
-    // Carga tus archivos renombrados como están en tu sistema
-    cargarGeoJSON("POIs_sin_ninguna(2).geojson", "green", "Error tipo 1");
+    // Cargar archivos GeoJSON de errores
+    cargarGeoJSON("POIs_sin_ninguna_CORREGIDO.geojson", "green", "Error tipo 1");
     cargarGeoJSON("pois_lado_equivocado_flexible.geojson", "red", "Error tipo 2");
-    cargarGeoJSON("POIs_solo_agua_arbol_vias(2).geojson", "blue", "Error tipo 3");
-    cargarGeoJSON("POIs_solo_estructura(2).geojson", "orange", "Error tipo 4");
-
+    cargarGeoJSON("POIs_solo_agua_arbol_vias_CORREGIDO.geojson", "blue", "Error tipo 3");
+    cargarGeoJSON("POIs_solo_estructura_CORREGIDO.geojson", "orange", "Error tipo 4");
   </script>
 </body>
+
 </html>
