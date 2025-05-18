@@ -1,0 +1,40 @@
+POI_ID,Contiene_árbol,Contiene_estructura,Contiene_tren,Contiene_agua,Sin_detecciones,Objetos_detectados,lat,lon
+1137706795,False,False,True,True,False,"bus, boat, train",19.29548,-99.65059121159356
+1224561863,False,False,False,False,True,potted plant,19.32128440458247,-99.62526607029443
+1135000561,False,False,True,False,False,"person, train",19.280470618845126,-99.17035011384661
+1262969885,False,False,False,False,True,"bear, giraffe, broccoli, pizza, carrot, bird, person",19.31424547474236,-99.16786952938523
+1262969888,False,False,False,False,True,"carrot, giraffe, umbrella, bird",19.31722577933303,-99.16520631984697
+1262969886,False,False,False,False,True,"bear, broccoli, carrot, bird, person",19.32036467470477,-99.16242756086459
+1262969882,False,False,False,False,True,"sports ball, bird",19.323514783869115,-99.15961587622249
+1262969881,False,False,False,False,True,"carrot, stop sign, apple, umbrella",19.325177133056425,-99.15816194734525
+1262969879,False,False,False,False,True,"bench, umbrella, bird, fire hydrant, person",19.32826585046076,-99.15548025766948
+1203168084,False,False,False,False,True,"baseball glove, person, umbrella, bird",19.295570751875566,-99.15501141224654
+1262969875,False,False,True,False,False,"parking meter, giraffe, bird, person, train",19.329987751941324,-99.15401435051602
+1105334318,False,False,True,False,False,"cow, potted plant, clock, train",19.35392153553894,-99.17554161910223
+1105334315,False,False,True,False,False,"snowboard, vase, toilet, person, train",19.36163619906834,-99.17077053729817
+1244538019,False,False,True,False,False,"carrot, broccoli, person, train",19.404134602370732,-99.2825871884608
+1105334309,False,False,True,False,False,"clock, vase, cow, bottle, person, train",19.44516316595474,-99.19172590636472
+1161907148,False,True,True,False,False,"truck, traffic light, fire hydrant, car, train",19.462796141547567,-99.1481809773628
+1203381032,False,True,False,False,False,"truck, tv, parking meter, motorcycle, suitcase, fire hydrant",19.606382162110368,-99.18248251328559
+1231968823,False,True,False,False,False,"cup, dining table, potted plant, bird, bottle, fire hydrant, person, car",19.669472799355287,-99.18223008473936
+1223179611,False,False,True,False,False,"parking meter, person, bench, train",19.30144109141514,-99.11338042209913
+1223179622,False,False,True,False,False,"traffic light, bench, potted plant, person, train",19.277130833703374,-99.11828788345679
+1223179618,False,False,True,False,False,"parking meter, bench, fire hydrant, person, train",19.28055171798822,-99.11689570096664
+1220447145,False,True,True,False,False,"truck, clock, tie, cup, suitcase, fire hydrant, train",19.31148347391287,-99.1107189558998
+1137337964,False,True,True,False,False,"truck, clock, traffic light, suitcase, bottle, person, banana, train",19.41997577221232,-99.12204240347346
+1137337964,False,True,True,False,False,"truck, clock, traffic light, suitcase, bottle, person, banana, train",19.41997577221232,-99.12204240347346
+1229372561,False,True,False,False,False,"clock, parking meter, vase, bus, suitcase, cell phone, bottle, person, car",19.36196612668818,-99.0571455213293
+1220447147,False,False,True,False,False,"bus, bottle, traffic light, train",19.361244873311893,-99.1102614786707
+1220447142,False,True,True,False,False,"truck, car, train",19.374937295505028,-99.10808413539228
+1220447130,False,False,True,False,False,"suitcase, person, train",19.382939336196735,-99.1109083026781
+1220447132,False,False,True,False,False,"suitcase, clock, traffic light, train",19.393975306954196,-99.11363638129399
+1105320672,False,False,True,False,False,"book, person, train",19.40853992526047,-99.09130127188214
+1059405201,False,False,False,False,True,"bear, bird, broccoli",19.464225521359555,-99.0417390427191
+1222691496,False,False,True,False,False,"knife, person, umbrella, train",19.543237005733527,-99.05553933583586
+1222653347,False,False,True,False,False,"bird, umbrella, train",19.539184764842012,-99.05898419393178
+1222653368,False,False,True,False,False,"oven, refrigerator, microwave, potted plant, suitcase, person, train",19.576377341201216,-99.04249510606616
+1222691507,False,True,True,False,False,"umbrella, car, skis, train",19.591589412413043,-99.03936599566352
+1222653375,False,False,False,False,True,person,19.592275529234957,-99.0390069688004
+1222653374,False,False,True,False,False,"clock, giraffe, person, train",19.59569198156188,-99.03743670016696
+1222691524,False,False,True,False,False,"suitcase, person, train",19.630148805022042,-99.00772866318867
+1011389129,False,False,False,False,True,traffic light,19.69975082466527,-99.203333667686

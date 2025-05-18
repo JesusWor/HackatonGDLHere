@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Mapa Satélite + Leyenda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    html,
+    body,
+    #map {
+      height: 100%;
+      margin: 0;
+    }
+
+    .legend {
+      background: white;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #333;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .legend span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 5px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <script>
+    const esriImagery = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{x}/{y}',
+      {
+        attribution: 'Tiles © Esri — Maxar, Earthstar Geographics, CNES/Airbus DS'
+      }
+    );
+    const openStreetMap = L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+      }
+    );
+
+    const map = L.map("map", {
+      center: [19.3, -99.15],
+      zoom: 15,
+      layers: [openStreetMap, esriImagery]
+    });
+
+    L.control.layers({
+      "Satélite (Esri)": esriImagery,
+      "Calles (OSM)": openStreetMap
+    }).addTo(map);
+
+    fetch("pois.geojson")
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          pointToLayer: (feature, latlng) => {
+            let color = "gray";
+            const tipo = feature.properties.tipo_error;
+
+            if (tipo === "Errror tipo 4") color = "green";
+            else if (tipo === "Error tipo 3") color = "blue";
+            else if (tipo === "Error tipo 1") color = "red";
+
+            return L.circleMarker(latlng, {
+              radius: 5,
+              fillColor: color,
+              color: "white",
+              weight: 1,
+              opacity: 1,
+              fillOpacity: 0.9
+            }).bindPopup(
+              `<b>POI:</b> ${feature.properties.POI_ID}<br>` +
+              `<b>Tipo de error:</b> ${feature.properties.tipo_error}<br>` +
+              `<b>Observación:</b> ${feature.properties.observacion}`
+            );
+          }
+        }).addTo(map);
+      });
+
+    fetch("overlays.json")
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(tile => {
+          L.imageOverlay(tile.img, tile.bounds, { opacity: 1 }).addTo(map);
+        });
+      });
+
+    // 🟨 Leyenda visual
+    const legend = L.control({ position: "bottomright" });
+    legend.onAdd = function () {
+      const div = L.DomUtil.create("div", "legend");
+      div.innerHTML = `
+        <div><span style="background: green"></span> Error tipo 4 (estructura)</div>
+        <div><span style="background: blue"></span> Error tipo 3 (árbol, agua o tren)</div>
+        <div><span style="background: red"></span> Error tipo 1 (sin detección)</div>
+      `;
+      return div;
+    };
+    legend.addTo(map);
+  </script>
+</body>
+
+</html>

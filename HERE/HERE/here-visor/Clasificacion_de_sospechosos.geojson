@@ -1,0 +1,590 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1137706795,
+        "Observacion": "agua",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1224561863,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1135000561,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969885,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969888,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969886,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969882,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969881,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969879,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1203168084,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1262969875,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1105334318,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1105334315,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1244538019,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1105334309,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1161907148,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1203381032,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1231968823,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1223179611,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1223179622,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1223179618,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1220447145,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1137337964,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1137337964,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1229372561,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1220447147,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1220447142,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1220447130,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1220447132,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1105320672,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1059405201,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222691496,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222653347,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222653368,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222691507,
+        "Observacion": "estructura",
+        "Tipo_error": "Errror tipo 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222653375,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222653374,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1222691524,
+        "Observacion": "vias",
+        "Tipo_error": "Error tipo 3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.203334,
+          19.699751
+        ]
+      },
+      "properties": {
+        "POI_ID": 1011389129,
+        "Observacion": "ninguna",
+        "Tipo_error": "Error tipo 1"
+      }
+    }
+  ]
+}
