@@ -28,3 +28,10 @@ Automatically detect and resolve the following scenarios defined by POI295 valid
 - **OpenStreetMap** (contextual street data)
 
 ---
+
+## 🗂️ Project Structure
+🗂️ HERE/HERE
+|
+├── here-visor: in this carpet we can find the files that make the vizualization in the map with the errors
+🗂️ filtros: in this carpet we can find the funtion to filter the streets
+🗂️ Deteccion_sospechosos: in this carpet we ca find the street and POIs filter and acomodados de manera correcta para su filtrado que hace la capreta anterior
