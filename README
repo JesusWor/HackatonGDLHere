@@ -18,3 +18,13 @@ Detectar y resolver automáticamente los siguientes escenarios definidos por la 
 4. ✅ **Ubicación correcta:** Marcar como “Legítima excepción”.
 
 ---
+
+## 🧰 Tecnologías Utilizadas
+
+- **Python** (GeoPandas, Pandas, Shapely, rquests, math)
+- **HERE REST APIs** (Imágenes satelitales)
+- **Folium / Kepler.gl** (Visualización geoespacial)
+- **OpenCV** (Validación opcional con imágenes)
+- **Jupyter Notebooks** (Prototipado y pruebas)
+
+---
