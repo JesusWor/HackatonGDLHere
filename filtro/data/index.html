@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mapa de Errores en POIs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+    }
+    .legend {
+      background: white;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 1.6em;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .legend span {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 6px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map("map").setView([19.4, -99.1], 11);
+    const bounds = L.latLngBounds();
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const files = [
+      { url: "POIs_sin_ninguna.geojson", label: "Error #1: sin ninguna", color: "red" },
+      { url: "pois_lado_equivocado_flexible.geojson", label: "Error #2: lado equivocado", color: "orange" },
+      { url: "POIs_solo_agua_arbol_vias.geojson", label: "Error #3: solo agua/árbol/vías", color: "blue" },
+      { url: "POIs_solo_estructura.geojson", label: "Error #4: solo estructura", color: "purple" }
+    ];
+
+    const conteos = {};
+
+    files.forEach(({ url, label, color }) => {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const layer = L.geoJSON(data, {
+            pointToLayer: (feature, latlng) => {
+              return L.circleMarker(latlng, {
+                radius: 6,
+                fillColor: color,
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.85
+              });
+            },
+            onEachFeature: (feature, layer) => {
+              const p = feature.properties;
+              const popup = `
+                <b>POI ID:</b> ${p.POI_ID || "N/A"}<br>
+                <b>Name:</b> ${p.name || "N/A"}<br>
+                <b>Street:</b> ${p.street_name || "N/A"}<br>
+                <b>Side:</b> ${p.side || "N/A"}<br>
+                <b>Error:</b> ${p.Tipo_error || label}<br>
+                <b>Observación:</b> ${p.Observacion || "N/A"}
+              `;
+              layer.bindPopup(popup);
+            }
+          }).addTo(map);
+
+          let added = 0;
+          data.features.forEach(f => {
+            if (f.geometry && f.geometry.coordinates) {
+              const [lng, lat] = f.geometry.coordinates;
+              if (lat && lng) {
+                bounds.extend([lat, lng]);
+                added++;
+              }
+            }
+          });
+
+          conteos[label] = added;
+          if (added === 0) {
+            console.warn(`⚠️ ${label} tiene 0 puntos válidos en el mapa.`);
+          }
+        });
+    });
+
+    // Esperar carga y ajustar vista + leyenda
+    setTimeout(() => {
+      map.fitBounds(bounds);
+
+      const legend = L.control({ position: "bottomright" });
+      legend.onAdd = function () {
+        const div = L.DomUtil.create("div", "legend");
+        div.innerHTML = "<strong>Tipos de error</strong><br>";
+        files.forEach(({ label, color }) => {
+          const count = conteos[label] || 0;
+          div.innerHTML += `<span style="background:${color};"></span> ${label} (${count})<br>`;
+        });
+        return div;
+      };
+      legend.addTo(map);
+    }, 1500);
+  </script>
+</body>
+</html>
