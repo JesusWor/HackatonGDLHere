@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Mapa de Errores en POIs</title>
+  <title>Mapa de POIs con Errores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
@@ -13,8 +13,8 @@
     .legend {
       background: white;
       padding: 10px;
+      line-height: 1.4em;
       font-size: 14px;
-      line-height: 1.6em;
       border-radius: 6px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
@@ -32,85 +32,72 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map("map").setView([19.4, -99.1], 11);
-    const bounds = L.latLngBounds();
+    const map = L.map("map").setView([19.4, -99.1], 10);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    const files = [
-      { url: "POIs_sin_ninguna.geojson", label: "Error #1: sin ninguna", color: "red" },
-      { url: "pois_lado_equivocado_flexible.geojson", label: "Error #2: lado equivocado", color: "orange" },
-      { url: "POIs_solo_agua_arbol_vias.geojson", label: "Error #3: solo agua/árbol/vías", color: "blue" },
-      { url: "POIs_solo_estructura.geojson", label: "Error #4: solo estructura", color: "purple" }
-    ];
+    const conteo = {
+      "Error tipo 1": 0,
+      "Error tipo 2": 0,
+      "Error tipo 3": 0,
+      "Error tipo 4": 0
+    };
 
-    const conteos = {};
-
-    files.forEach(({ url, label, color }) => {
-      fetch(url)
-        .then(res => res.json())
+    function cargarGeoJSON(archivo, color, tipoError) {
+      fetch(archivo)
+        .then(response => response.json())
         .then(data => {
-          const layer = L.geoJSON(data, {
+          L.geoJSON(data, {
             pointToLayer: (feature, latlng) => {
+              conteo[tipoError]++;
               return L.circleMarker(latlng, {
                 radius: 6,
                 fillColor: color,
                 color: "#000",
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.85
-              });
-            },
-            onEachFeature: (feature, layer) => {
-              const p = feature.properties;
-              const popup = `
-                <b>POI ID:</b> ${p.POI_ID || "N/A"}<br>
-                <b>Name:</b> ${p.name || "N/A"}<br>
-                <b>Street:</b> ${p.street_name || "N/A"}<br>
-                <b>Side:</b> ${p.side || "N/A"}<br>
-                <b>Error:</b> ${p.Tipo_error || label}<br>
-                <b>Observación:</b> ${p.Observacion || "N/A"}
-              `;
-              layer.bindPopup(popup);
+                fillOpacity: 0.8
+              }).bindPopup(`
+                <b>POI_ID:</b> ${feature.properties.POI_ID || 'N/A'}<br>
+                ${feature.properties.Observacion ? <b>Observación:</b> ${feature.properties.Observacion}<br> : ""}
+                <b>Tipo de Error:</b> ${feature.properties.Tipo_error || tipoError}
+              `);
             }
           }).addTo(map);
 
-          let added = 0;
-          data.features.forEach(f => {
-            if (f.geometry && f.geometry.coordinates) {
-              const [lng, lat] = f.geometry.coordinates;
-              if (lat && lng) {
-                bounds.extend([lat, lng]);
-                added++;
-              }
-            }
-          });
-
-          conteos[label] = added;
-          if (added === 0) {
-            console.warn(`⚠️ ${label} tiene 0 puntos válidos en el mapa.`);
-          }
+          actualizarLeyenda();
         });
-    });
+    }
 
-    // Esperar carga y ajustar vista + leyenda
-    setTimeout(() => {
-      map.fitBounds(bounds);
+    function actualizarLeyenda() {
+      if (!legendDiv) return;
+      legendDiv.innerHTML = `
+        <strong>Tipos de Error</strong><br>
+        <span style="background:green;"></span> Error tipo 1 (Sin obstáculos): ${conteo["Error tipo 1"]}<br>
+        <span style="background:red;"></span> Error tipo 2 (Lado equivocado): ${conteo["Error tipo 2"]}<br>
+        <span style="background:blue;"></span> Error tipo 3 (Agua, árbol, vías): ${conteo["Error tipo 3"]}<br>
+        <span style="background:orange;"></span> Error tipo 4 (Solo estructura): ${conteo["Error tipo 4"]}
+      `;
+    }
 
-      const legend = L.control({ position: "bottomright" });
-      legend.onAdd = function () {
-        const div = L.DomUtil.create("div", "legend");
-        div.innerHTML = "<strong>Tipos de error</strong><br>";
-        files.forEach(({ label, color }) => {
-          const count = conteos[label] || 0;
-          div.innerHTML += `<span style="background:${color};"></span> ${label} (${count})<br>`;
-        });
-        return div;
-      };
-      legend.addTo(map);
-    }, 1500);
+    let legendDiv;
+
+    const legend = L.control({ position: "bottomright" });
+    legend.onAdd = function () {
+      legendDiv = L.DomUtil.create("div", "legend");
+      actualizarLeyenda(); // Inicializa con 0
+      return legendDiv;
+    };
+    legend.addTo(map);
+
+    // Carga tus archivos renombrados como están en tu sistema
+    cargarGeoJSON("POIs_sin_ninguna(2).geojson", "green", "Error tipo 1");
+    cargarGeoJSON("pois_lado_equivocado_flexible.geojson", "red", "Error tipo 2");
+    cargarGeoJSON("POIs_solo_agua_arbol_vias(2).geojson", "blue", "Error tipo 3");
+    cargarGeoJSON("POIs_solo_estructura(2).geojson", "orange", "Error tipo 4");
+
   </script>
 </body>
 </html>
