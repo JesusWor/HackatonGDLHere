@@ -18,3 +18,13 @@ Automatically detect and resolve the following scenarios defined by POI295 valid
 4. ✅ **Correct location:** Mark as a “Legitimate exception”.
 
 ---
+
+## 🧰 Technologies Used
+
+- **Python** (GeoPandas, Pandas, Shapely, requests, math)
+- **HERE REST APIs** (Satellite imagery acquisition)
+- **Leaflet.js** (interactive web mapping)
+- **YOLOv8n** (optional visual validation through object detection)
+- **OpenStreetMap** (contextual street data)
+
+---
