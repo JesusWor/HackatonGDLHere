@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <title>Mapa de POIs con Errores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
-    html,
-    body,
-    #map {
+    html, body, #map {
       height: 100%;
       margin: 0;
     }
-
     .legend {
       background: white;
       padding: 10px;
       line-height: 1.4em;
       font-size: 14px;
       border-radius: 6px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
-
     .legend span {
       display: inline-block;
       width: 14px;
@@ -32,13 +27,12 @@
     }
   </style>
 </head>
-
 <body>
   <div id="map"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map("map").setView([19.4, -99.1], 10);
+    const map = L.map("map").setView([19.4, -99.1], 11);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
@@ -51,47 +45,8 @@
       "Error tipo 4": 0
     };
 
-    function cargarGeoJSON(archivo, color, tipoError) {
-      fetch(archivo)
-        .then(response => response.json())
-        .then(data => {
-          L.geoJSON(data, {
-            pointToLayer: (feature, latlng) => {
-              conteo[tipoError]++;
-              const observacion = feature.properties.Observacion
-                ? `<b>Observación:</b> ${feature.properties.Observacion}<br>`
-                : "";
-              const popupContent = `
-                <b>POI_ID:</b> ${feature.properties.POI_ID || 'N/A'}<br>
-                ${observacion}
-                <b>Tipo de Error:</b> ${feature.properties.Tipo_error || tipoError}
-              `;
-              return L.circleMarker(latlng, {
-                radius: 6,
-                fillColor: color,
-                color: "#000",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: 0.8
-              }).bindPopup(popupContent);
-            }
-          }).addTo(map);
-          actualizarLeyenda();
-        });
-    }
-
-    function actualizarLeyenda() {
-      if (!legendDiv) return;
-      legendDiv.innerHTML = `
-        <strong>Tipos de Error</strong><br>
-        <span style="background:green;"></span> Error tipo 1 (Sin obstáculos): ${conteo["Error tipo 1"]}<br>
-        <span style="background:red;"></span> Error tipo 2 (Lado equivocado): ${conteo["Error tipo 2"]}<br>
-        <span style="background:blue;"></span> Error tipo 3 (Agua, árbol, vías): ${conteo["Error tipo 3"]}<br>
-        <span style="background:orange;"></span> Error tipo 4 (Solo estructura): ${conteo["Error tipo 4"]}
-      `;
-    }
-
     let legendDiv;
+
     const legend = L.control({ position: "bottomright" });
     legend.onAdd = function () {
       legendDiv = L.DomUtil.create("div", "legend");
@@ -100,12 +55,48 @@
     };
     legend.addTo(map);
 
-    // Cargar archivos GeoJSON de errores
-    cargarGeoJSON("POIs_sin_ninguna_CORREGIDO.geojson", "green", "Error tipo 1");
+    function actualizarLeyenda() {
+      if (!legendDiv) return;
+      legendDiv.innerHTML = `
+        <strong>Tipos de Error</strong><br>
+        <span style="background:green;"></span> Error tipo 1 (Sin obstáculos): ${conteo["Error tipo 1"]}<br>
+        <span style="background:red;"></span> Error tipo 2 (Lado equivocado): ${conteo["Error tipo 2"]}<br>
+        <span style="background:blue;"></span> Error tipo 3 (Agua/árbol/vías): ${conteo["Error tipo 3"]}<br>
+        <span style="background:orange;"></span> Error tipo 4 (Solo estructura): ${conteo["Error tipo 4"]}
+      `;
+    }
+
+    function cargarGeoJSON(url, color, tipoError) {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          L.geoJSON(data, {
+            pointToLayer: (feature, latlng) => {
+              conteo[tipoError]++;
+              return L.circleMarker(latlng, {
+                radius: 6,
+                fillColor: color,
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+              }).bindPopup(`
+                <b>POI_ID:</b> ${feature.properties.POI_ID}<br>
+                ${feature.properties.Observacion ? `<b>Observación:</b> ${feature.properties.Observacion}<br>` : ""}
+                <b>Tipo de Error:</b> ${feature.properties.Tipo_error}
+              `);
+            }
+          }).addTo(map);
+          actualizarLeyenda();
+        });
+    }
+
+    // Cargar los 4 archivos
+    cargarGeoJSON("error1.geojson", "green", "Error tipo 1");
     cargarGeoJSON("pois_lado_equivocado_flexible.geojson", "red", "Error tipo 2");
-    cargarGeoJSON("POIs_solo_agua_arbol_vias_CORREGIDO.geojson", "blue", "Error tipo 3");
-    cargarGeoJSON("POIs_solo_estructura_CORREGIDO.geojson", "orange", "Error tipo 4");
+    cargarGeoJSON("error3.geojson", "blue", "Error tipo 3");
+    cargarGeoJSON("error4.geojson", "orange", "Error tipo 4");
+
   </script>
 </body>
-
 </html>
