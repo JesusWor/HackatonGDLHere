@@ -7,3 +7,24 @@ This project was developed for **GuadalaHacks 2025**, organized by HERE Technolo
 The main goal is to eliminate the need for manual intervention through an intelligent system capable of classifying, correcting, and scaling the solution globally.
 
 ---
+
+## 🎯 Objective
+
+Automatically detect and resolve the following scenarios defined by POI295 validation:
+
+1. ❌ **The POI no longer exists:** Remove it from the dataset.
+2. ↔️ **POI is on the wrong side of the road:** Reassign it based on the direction of the `Reference Node`.
+3. 🛣️ **Attribution error on the road segment:** Fix the `MULTIDIGIT` attribute.
+4. ✅ **Correct location:** Mark as a “Legitimate exception”.
+
+---
+
+## 🧰 Technologies Used
+
+- **Python** (GeoPandas, Pandas, Shapely, requests, math)
+- **HERE REST APIs** (Satellite imagery acquisition)
+- **Leaflet.js** (interactive web mapping)
+- **YOLOv8n** (optional visual validation through object detection)
+- **OpenStreetMap** (contextual street data)
+
+---
