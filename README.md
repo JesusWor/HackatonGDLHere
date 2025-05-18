@@ -23,8 +23,8 @@ Detectar y resolver automáticamente los siguientes escenarios definidos por la 
 
 - **Python** (GeoPandas, Pandas, Shapely, rquests, math)
 - **HERE REST APIs** (Imágenes satelitales)
-- **Folium / Kepler.gl** (Visualización geoespacial)
-- **OpenCV** (Validación opcional con imágenes)
-- **Jupyter Notebooks** (Prototipado y pruebas)
+- **Leaflets.js** (biblioteca de mapas interactivos)
+- **tolov8n** (Validación opcional con imágenes)
+- **OpenStreetma** (Calles, contexto urbano)
 
 ---
