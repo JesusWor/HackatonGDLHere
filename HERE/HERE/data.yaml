@@ -1,0 +1,9 @@
+train: /ruta/a/dataset/images/train
+val: /ruta/a/dataset/images/val
+
+nc: 3 # número de clases
+
+names:
+  0: estructura
+  1: arbol
+  2: agua
